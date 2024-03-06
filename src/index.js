@@ -4,10 +4,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import {FirebaseContext} from './store/FirebaseContext'
+import Context from './store/FirebaseContext';
+import firebase from './firebase/config'
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    {/* Wrap the App component with FirebaseContext.Provider */}
+    <FirebaseContext.Provider value={firebase}>
+      <Context>
+      <App />
+      </Context>
+    </FirebaseContext.Provider>
   </React.StrictMode>
 );
 
